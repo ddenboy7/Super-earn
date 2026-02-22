@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUPER EARN</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    background: #f4f7fc;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #07204a, #0a3d91);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header img {
+    height: 56px; /* doubled size */
+    margin-right: 10px;
+}
+
+/* Balance Cards */
+.balance-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 15px;
+}
+.balance-card {
+    background: white;
+    flex: 1 1 45%;
+    margin: 5px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.balance-card h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #07204a;
+}
+.balance-card p {
+    margin: 5px 0 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #0a3d91;
+}
+
+/* Quick Actions */
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 10px;
+}
+.action-btn {
+    background: white;
+    flex: 1 1 45%;
+    margin: 5px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.action-btn:hover {
+    transform: translateY(-3px);
+}
+.action-btn a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.action-btn span {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #07204a;
+}
+
+/* Referral Section */
+.referral {
+    background: white;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 100px; /* extra space so button doesn’t hide under nav */
+}
+.referral h5 {
+    margin-bottom: 10px;
+    color: #07204a;
+}
+.referral p {
+    font-size: 14px;
+    color: #333;
+}
+.referral input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+.copy-btn {
+    margin-top: 10px;
+    background: #07204a;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    width: 100%;
+    cursor: pointer;
+}
+.copy-btn:hover {
+    background: #0a3d91;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #07204a;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+.bottom-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    flex: 1;
+}
+.bottom-nav a.active {
+    color: #ffd700;
+    font-weight: bold;
+}
+.bottom-nav span {
+    display: block;
+    font-size: 12px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <!-- Replace ka-logo.png with your actual logo file -->
+    <img src="logo.png" alt="logo">
+    <h3>SUPER EARN</h3>
+</div>
+
+<!-- Balance Section -->
+<div class="balance-section">
+    <div class="balance-card">
+        <h4>Balance</h4>
+        <p id="balance">4,000 UGX</p> <!-- Sign-up bonus -->
+    </div>
+    <div class="balance-card">
+        <h4>Withdraw</h4>
+        <p id="withdraw">0 UGX</p>
+    </div>
+    <div class="balance-card">
+        <h4>Income</h4>
+        <p id="income">4,000 UGX</p> <!-- Sign-up bonus -->
+    </div>
+    <div class="balance-card">
+        <h4>Invested</h4>
+        <p id="invested">0 UGX</p> <!-- stays 0 until invested -->
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="actions">
+    <div class="action-btn">
+        <a href="packages.html">
+            💰 <span>Recharge</span>
+        </a>
+    </div>
+    <div class="action-btn">
+        <a href="profile.html">
+            👥 <span>Team</span>
+        </a>
+    </div>
+    <div class="action-btn">
+        <a href="withdraw.html">
+            💸 <span>Withdraw</span>
+        </a>
+    </div>
+    <div class="action-btn">
+        <a href="reports.html">
+            📊 <span>Records</span>
+        </a>
+    </div>
+</div>
+
+<!-- Referral Section -->
+<div class="referral">
+    <h5>Your Referral Link</h5>
+    <p>Copy & share this link to invite your friends. Earn bonuses when they invest.</p>
+    <p>🔶 Level 1 = 10% &nbsp; 🔷 Level 2 = 5% &nbsp; 🔷 Level 3 = 1%</p>
+    <input type="text" id="refLink" value="https://superearn.com/register?reff=YourName" readonly>
+    <button class="copy-btn" onclick="copyLink()">Copy Link</button>
+</div>
+
+<script>
+function copyLink() {
+    var copyText = document.getElementById("refLink");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); 
+    document.execCommand("copy");
+    alert("Referral link copied: " + copyText.value);
+}
+</script>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a href="dashboard.html" class="active">🏠<span>Home</span></a>
+    <a href="packages.html">📦<span>Investments</span></a>
+    <a href="reports.html">📊<span>Records</span></a>
+    <a href="withdraw.html">💸<span>Withdraw</span></a>
+    <a href="profile.html">👤<span>Team</span></a>
+</div>
+
+</body>
+</html>

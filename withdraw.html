@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Withdraw - SUPER EARN</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    background: #f4f7fc;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background: linear-gradient(135deg, #07204a, #0a3d91);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header img {
+    height: 56px;
+    margin-right: 10px;
+}
+.withdraw-card {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.withdraw-card h4 {
+    color: #07204a;
+    margin-bottom: 15px;
+}
+.withdraw-card label {
+    font-weight: bold;
+    color: #07204a;
+}
+.withdraw-card input, .withdraw-card select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+.withdraw-btn {
+    background: #07204a;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    width: 100%;
+    cursor: pointer;
+}
+.withdraw-btn:hover {
+    background: #0a3d91;
+}
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #07204a;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+.bottom-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    flex: 1;
+}
+.bottom-nav a.active {
+    color: #ffd700;
+    font-weight: bold;
+}
+.bottom-nav span {
+    display: block;
+    font-size: 12px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <img src="ka-logo.png" alt="KA Logo">
+    <h3>SUPER EARN</h3>
+</div>
+
+<!-- Withdraw Form -->
+<div class="withdraw-card">
+    <h4>Withdraw Funds</h4>
+    <form onsubmit="submitWithdraw(event)">
+        <label for="amount">Amount (UGX)</label>
+        <input type="number" id="amount" name="amount" placeholder="Enter amount" min="5000" required>
+
+        <label for="method">Mobile Money Network</label>
+        <select id="method" name="method" required>
+            <option value="">Select Network</option>
+            <option value="MTN">MTN Mobile Money</option>
+            <option value="Airtel">Airtel Money</option>
+        </select>
+
+        <label for="account">Phone Number</label>
+        <input type="text" id="account" name="account" placeholder="Enter phone number" required>
+
+        <button type="submit" class="withdraw-btn">Submit Withdrawal</button>
+    </form>
+</div>
+
+<script>
+function submitWithdraw(event) {
+    event.preventDefault();
+    let amount = parseInt(document.getElementById("amount").value);
+    let method = document.getElementById("method").value;
+    let account = document.getElementById("account").value;
+
+    if(amount < 5000) {
+        alert("Minimum withdrawal amount is UGX 5,000.");
+        return;
+    }
+
+    if(amount && method && account) {
+        alert("Withdrawal request submitted:\nAmount: UGX " + amount + "\nNetwork: " + method + "\nPhone: " + account);
+        // Backend integration goes here
+    } else {
+        alert("Please fill in all fields.");
+    }
+}
+</script>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a href="dashboard.html">🏠<span>Home</span></a>
+    <a href="packages.html">📦<span>Investments</span></a>
+    <a href="reports.html">📊<span>Records</span></a>
+    <a href="withdraw.html" class="active">💸<span>Withdraw</span></a>
+    <a href="profile.html">👤<span>Team</span></a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Investment Packages - SUPER EARN</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+    background:#f4f7fc;
+    font-family:Arial, sans-serif;
+    margin:0;
+    padding-bottom:80px;
+}
+
+/* Header */
+.header{
+    background:#07204a;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* Table Box */
+.table-box{
+    background:white;
+    margin:20px;
+    border-radius:10px;
+    overflow-x:auto;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+table{
+    width:100%;
+    text-align:center;
+}
+
+th{
+    background:#1c1f26;
+    color:white;
+    padding:12px;
+    font-size:14px;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid #eee;
+}
+
+/* Invest Button */
+.invest-btn{
+    background:#0d6efd;
+    color:white;
+    border:none;
+    padding:6px 12px;
+    border-radius:6px;
+    font-size:13px;
+}
+
+/* Bottom Navigation */
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:white;
+    display:flex;
+    justify-content:space-around;
+    padding:10px 0;
+    box-shadow:0 -2px 8px rgba(0,0,0,0.1);
+}
+
+.bottom-nav a{
+    text-decoration:none;
+    color:#666;
+    font-size:14px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.bottom-nav a.active{
+    color:#0d6efd;
+    font-weight:bold;
+}
+
+/* Popup */
+#investPopup{
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+}
+#investPopup .popup-box{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:85%;
+    max-width:350px;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h4>Investment Plan (10% Daily — 90 Days)</h4>
+</div>
+
+<!-- Investment Table -->
+<div class="table-box">
+<table>
+
+<tr>
+    <th>Amount</th>
+    <th>Daily Profit</th>
+    <th>Total Profit</th>
+    <th>Action</th>
+</tr>
+
+<tr><td>10,000</td><td>1,000</td><td>90,000</td><td><button class="invest-btn" onclick="openPopup(10000)">Invest</button></td></tr>
+<tr><td>20,000</td><td>2,000</td><td>180,000</td><td><button class="invest-btn" onclick="openPopup(20000)">Invest</button></td></tr>
+<tr><td>50,000</td><td>5,000</td><td>450,000</td><td><button class="invest-btn" onclick="openPopup(50000)">Invest</button></td></tr>
+<tr><td>100,000</td><td>10,000</td><td>900,000</td><td><button class="invest-btn" onclick="openPopup(100000)">Invest</button></td></tr>
+<tr><td>300,000</td><td>30,000</td><td>2,700,000</td><td><button class="invest-btn" onclick="openPopup(300000)">Invest</button></td></tr>
+<tr><td>500,000</td><td>50,000</td><td>4,500,000</td><td><button class="invest-btn" onclick="openPopup(500000)">Invest</button></td></tr>
+<tr><td>1,000,000</td><td>100,000</td><td>9,000,000</td><td><button class="invest-btn" onclick="openPopup(1000000)">Invest</button></td></tr>
+<tr><td>2,000,000</td><td>200,000</td><td>18,000,000</td><td><button class="invest-btn" onclick="openPopup(2000000)">Invest</button></td></tr>
+<tr><td>3,000,000</td><td>300,000</td><td>27,000,000</td><td><button class="invest-btn" onclick="openPopup(3000000)">Invest</button></td></tr>
+<tr><td>5,000,000</td><td>500,000</td><td>45,000,000</td><td><button class="invest-btn" onclick="openPopup(5000000)">Invest</button></td></tr>
+<tr><td>10,000,000</td><td>1,000,000</td><td>90,000,000</td><td><button class="invest-btn" onclick="openPopup(10000000)">Invest</button></td></tr>
+
+</table>
+</div>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a href="dashboard.html">🏠<span>Home</span></a>
+    <a href="packages.html">📦<span>Packages</span></a>
+    <a href="reports.html">📊<span>Reports</span></a>
+    <a href="withdraw.html">💸<span>Withdraw</span></a>
+    <a href="profile.html">👤<span>Profile</span></a>
+</div>
+
+
+<!-- Investment Popup -->
+<div id="investPopup">
+    <div class="popup-box">
+        <h5>Confirm Investment</h5>
+        <p>You are investing:</p>
+        <h4 id="selectedAmount">0 UGX</h4>
+        <button onclick="confirmInvestment()" class="btn btn-primary w-100 mb-2">Confirm</button>
+        <button onclick="closePopup()" class="btn btn-secondary w-100">Cancel</button>
+    </div>
+</div>
+
+<script>
+let selectedAmount = 0;
+
+function openPopup(amount){
+    selectedAmount = amount;
+    document.getElementById("selectedAmount").textContent = amount.toLocaleString() + " UGX";
+    document.getElementById("investPopup").style.display = "flex";
+}
+function closePopup(){
+    document.getElementById("investPopup").style.display = "none";
+}
+function confirmInvestment(){
+    // Redirect to deposit.html with selected amount
+    window.location.href = "deposit.html?amount=" + selectedAmount;
+}
+</script>
+
+
+</body>
+</html>
